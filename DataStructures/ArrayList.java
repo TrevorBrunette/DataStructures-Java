@@ -1,5 +1,3 @@
-package com.trevor.Contests.DataStructures;
-
 import java.util.Arrays;
 
 public class ArrayList<E> {

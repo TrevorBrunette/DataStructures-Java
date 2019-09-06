@@ -1,5 +1,3 @@
-package com.trevor.Contests.DataStructures;
-
 public class LinkedArrayList<E>{
 
     private ONode<E> first;
