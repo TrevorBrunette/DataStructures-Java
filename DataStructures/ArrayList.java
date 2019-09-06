@@ -65,4 +65,10 @@ public class ArrayList<E> {
         return (E[])Arrays.copyOf(list, list.length);
     }
 
+    @Override
+    public String toString(){
+        String str = "";
+        return str;
+    }
+
 }
