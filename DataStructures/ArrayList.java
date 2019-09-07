@@ -6,7 +6,7 @@ public class ArrayList<E> {
     private int size;
 
     public ArrayList(){
-        this.list = new Object[5];
+        this.list = new Object[4];
         size = 0;
     }
 
@@ -23,16 +23,12 @@ public class ArrayList<E> {
         return size;
     }
 
-    private void grow(int newSize){
-        int temp = size;
-        if(newSize <= temp){
-            temp = temp + newSize;
-        }
-        list = Arrays.copyOf(list, temp);
-    }
-
     private void grow(){
-        grow(1);
+        Object[] newList = new Object[2 * list.length];
+        for(int i = 0; i < list.length; i++){
+            newList[i] = list[i];
+        }
+        list = newList;
     }
 
     public void add(E a){
@@ -43,21 +39,51 @@ public class ArrayList<E> {
         size++;
     }
 
-    public void set (int index, E a){
-        Object[] tempList = new Object[size - index];
-        System.arraycopy(list, index, tempList, 0, size - index);
-    }
-
     @SuppressWarnings("unchecked")
-    private E getS(int index){
+    public E get(int index) throws IndexOutOfBoundsException{
+        if(index < 0 || index >= size){
+            throw new IndexOutOfBoundsException();
+        }
         return (E)list[index];
     }
 
-    public E get(int index){
-        if(index < 0 || index > size - 1){
+    public void set (int index, E a) throws IndexOutOfBoundsException{
+        if(index < 0 || index >= size){
             throw new IndexOutOfBoundsException();
         }
-        return getS(index);
+
+        Object[] tempList = new Object[list.length];
+        for(int i = 0; i < index; i++){
+            tempList[i] = list[i];
+        }
+        tempList[index] = a;
+        for(int i = index+1; i < size; i++){
+            tempList[i] = list[i];
+        }
+        list = tempList;
+    }
+
+    public void remove(int index) throws IndexOutOfBoundsException{
+        if(index < 0 || index >= size){
+            throw new IndexOutOfBoundsException();
+        }
+        Object[] tempList = new Object[list.length];
+        if(index!=0) {
+            for (int i = 0; i < index; i++) {
+                tempList[i] = list[i];
+            }
+
+            for (int i = index + 1; i < size; i++) {
+                tempList[i] = list[i];
+            }
+        }
+        else{
+            for (int i = 1; i < size; i++) {
+                tempList[i-1] = list[i];
+            }
+        }
+        list = tempList;
+        size--;
     }
 
     @SuppressWarnings("unchecked")
@@ -67,8 +93,15 @@ public class ArrayList<E> {
 
     @Override
     public String toString(){
-        String str = "";
-        return str;
+        if(isEmpty()){
+            return "";
+        }
+        String out = "";
+        for(int i = 0; i < size-1; i++){
+            out += get(i) + ", ";
+        }
+        out += get(size - 1);
+        return out;
     }
 
 }

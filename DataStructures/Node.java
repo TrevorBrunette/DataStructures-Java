@@ -24,6 +24,10 @@ public class Node {
         this.data = data;
     }
 
+    public void setNext(int i) {
+        this.next = new Node(i);
+    }
+
     public void setNext(Node next) {
         this.next = next;
     }
@@ -35,5 +39,10 @@ public class Node {
     @Override
     public Node clone(){
         return new Node(data, next.clone());
+    }
+
+    @Override
+    public String toString() {
+        return "" + data;
     }
 }

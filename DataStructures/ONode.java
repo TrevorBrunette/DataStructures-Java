@@ -55,4 +55,8 @@ public class ONode<T> {
         }
     }
 
+    @Override
+    public String toString() {
+        return data.toString();
+    }
 }
