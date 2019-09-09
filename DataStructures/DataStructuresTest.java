@@ -1,7 +1,12 @@
-public class MainTest {
+import Structures.ArrayList;
+import Structures.LinkedArrayList;
+import Structures.Queue;
+import Structures.Stack;
+
+public class DataStructuresTest {
 
     public static void main(String[] args) throws Exception{
-        System.out.println("Stack Class:");
+        System.out.println("Structures.Stack Class:");
         Stack s = new Stack();
         s.push(1);
         s.push(2);
@@ -11,7 +16,7 @@ public class MainTest {
         System.out.println(s.pop());
         System.out.println(s + "\n");
 
-        System.out.println("Queue Class:");
+        System.out.println("Structures.Queue Class:");
         Queue q = new Queue();
         q.push(1);
         q.push(2);
@@ -21,7 +26,7 @@ public class MainTest {
         System.out.println(q.pop());
         System.out.println(q + "\n");
 
-        System.out.println("ArrayList Class:");
+        System.out.println("Structures.ArrayList Class:");
         ArrayList<Integer> arrayList = new ArrayList<>();
         arrayList.add(1);
         arrayList.add(2);
@@ -38,7 +43,7 @@ public class MainTest {
         arrayList.remove(3);
         System.out.println(arrayList + "\n");
 
-        System.out.println("LinkedArrayList Class:");
+        System.out.println("Structures.LinkedArrayList Class:");
         LinkedArrayList<Integer> linkedArrayList = new LinkedArrayList<>();
         linkedArrayList.add(1);
         linkedArrayList.add(2);
