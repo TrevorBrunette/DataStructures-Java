@@ -2,12 +2,33 @@ public class Stack {
 
     private Node head;
 
+    public Stack(){
+        head = null;
+    }
+
+    public Stack(int i){
+        head = new Node(i);
+    }
+
     public Stack(Node a){
         head = a;
     }
 
     public boolean isEmpty(){
         return head == null;
+    }
+
+    public int size(){
+        if(head==null){
+            return 0;
+        }
+        int count = 1;
+        Node temp = head;
+        while(temp.hasNext()){
+            temp = temp.getNext();
+            count++;
+        }
+        return count;
     }
 
     public int peek()throws NullPointerException{
@@ -20,14 +41,14 @@ public class Stack {
     }
 
     public int pop() throws NullPointerException{
-        try {
-            int temp = head.getData();
+        int temp = head.getData();
+        if(head.hasNext()) {
             head = head.getNext();
-            return temp;
-        } catch (NullPointerException e){
-            e.printStackTrace();
+        } else {
+            throw new NullPointerException();
         }
-        return 0;
+        return temp;
+
     }
 
     public void push(Node a){
@@ -35,4 +56,25 @@ public class Stack {
         head = a;
     }
 
+    public void push(int i){
+        push(new Node(i));
+    }
+
+    @Override
+    public String toString() {
+        if(isEmpty()){
+            return "";
+        }
+        if(!head.hasNext()){
+            return head.toString();
+        }
+        String out = "";
+        Node temp = head;
+        for(int i = 0; i < size()-1; i++){
+            out += temp + ", ";
+            temp = temp.getNext();
+        }
+        out += temp;
+        return out;
+    }
 }
